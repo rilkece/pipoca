@@ -1,0 +1,117 @@
+@use './variables'
+
+@mixin text-primary($font-size)
+    text-decoration: none 
+    flex: 1 1 auto	
+    color: variables.$text-color
+    font-size: $font-size
+    background: variables.$gradient
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+@mixin center
+    display: flex
+    justify-content: center
+    align-items: center
+@mixin between
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+
+@mixin btn
+    padding: 1rem 1.2rem
+    color: variables.$text-color
+    background: variables.$gradient
+    text-decoration: none
+    border-radius: 3rem
+
+@mixin gradient-border
+    content: ""
+    background: variables.$gradient
+    height: 3px
+    width: 30%
+
+@mixin breakpoint($point) 
+    @if $point == md 
+        @media (min-width: 62em) 
+            @content
+        @media (max-width: 62em) 
+           a
+            font-size: 0
+    @if $point == sm 
+        @media (max-width: 48em)
+          flex-wrap: wrap
+          .container-details
+            flex-wrap: wrap
+          .header__content
+            flex-wrap: wrap
+            justify-content: center
+          .header__logo
+            order:1
+          .header__search-bar
+            order:4
+          .header__extras
+            order:2
+
+@mixin breakline($point, $order)
+    @if $point == md 
+        @media (min-width: 62em)
+          .break 
+            flex-basis: 100%
+            height: 0
+            order: $order
+    @if $point == sm 
+        @media (max-width: 48em)
+          .break 
+            flex-basis: 100%
+            height: 0
+
+@mixin search_bar($height, $height-input, $border_w, $border_r)
+  height: 60px
+  flex: 1 1 auto
+  background: rgba(255, 255, 255, 0.1)
+  border-radius: $border_r
+  max-width: 400px
+  input
+    width: 100%
+    border: none
+    border-radius: $border_r
+    padding-left: 5%
+    font-size: 2rem
+    background-color: transparent
+    outline: none    
+  button
+    height: 100%
+    background-color: transparent
+    border-radius: $border_r
+    border: none
+    color: white
+    padding-right: 2%
+  svg
+    height: 100%
+    width: 100%
+  svg:hover
+    cursor: pointer
+
+@mixin badge($color)
+  background-color: $color
+  color: white
+  padding: 0.2rem 0.5rem
+  border-radius: 0.5rem
+  font-size: 0.8rem
+  font-weight: 600
+  margin-left: 0.5rem
+  cursor: pointer
+
+@mixin card($color)
+  background-color: $color
+  color: white
+  padding: 0.2rem 0.5rem
+  border-radius: 0.5rem
+  font-size: 0.8rem
+  font-weight: 600
+  margin-left: 0.5rem
+  cursor: pointer
+
+        
+    

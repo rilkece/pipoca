@@ -1,0 +1,19 @@
+@use './variables'
+@use './mixins'
+
+html
+    scroll-behavior: smooth
+body
+    background: variables.$body-bg-color
+    font-family: variables.$font-stack
+    color: variables.$text-color
+    margin: 0
+    padding: 0
+    box-sizing: border-box    
+.app-container    
+    background: variables.$body-bg-color
+    main
+        @include mixins.center
+
+
+   

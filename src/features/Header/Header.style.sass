@@ -1,0 +1,42 @@
+@use '../../styles/variables'
+
+@use '../../styles/mixins'
+    
+.header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    background: variables.$bg-color
+    width: 100%
+    padding: 1 1.5rem
+    @include mixins.breakpoint(md) 
+        padding: 0 1rem
+    @include mixins.breakpoint(sm)
+        padding: 0 0.5rem
+    @include mixins.breakline(sm, 3)    
+    transition: 0.3s ease all   
+    &__content      
+        @include  mixins.between
+        
+    &__logo 
+        @include mixins.text-primary(5rem)      
+        img
+            width: 60px
+            height: 100%  
+    &__search-bar    
+        @include mixins.center
+        @include mixins.search_bar(100%, 30%, 1px, 60px )  
+        input
+            color: variables.$text-color
+    &__extras
+        display: flex
+        flex: 2 1 auto
+        justify-content: flex-end
+        padding-right: 3rem
+        &__login
+            border-radius: 50%
+            cursor: pointer
+
+   
+    
+
