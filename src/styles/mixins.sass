@@ -24,6 +24,12 @@
     background: variables.$gradient
     text-decoration: none
     border-radius: 3rem
+    cursor: pointer
+    transition: all 0.3s ease
+    border: 1px solid transparent
+    &:hover
+        background: variables.$gradient-hover
+        border: 1px solid variables.$gradient-hover
 
 @mixin gradient-border
     content: ""

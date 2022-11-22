@@ -1,7 +1,7 @@
 //React and Core Components
 
 //Inbuilt Components
-import Rating from './Rating';
+import Rating from '../Rating';
 
 //Third components
 

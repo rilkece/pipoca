@@ -6,6 +6,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Header from '../Header'
 import Home from '../../screens/Home'
 import Details from '../../screens/Details/'
+import Search from '../../screens/Search/'
 
 
 //Third components
@@ -27,12 +28,13 @@ function App() {
       <meta name="Momento Pipoca" content= "Momento Pipoca" />
       <link rel="icon" type="image/png" href="/logo.png" sizes="16x16" />
     </Helmet>
-      <div className="app-container">
+      <div className="container container--fluid">
         <Header/>
         <main>
             <Routes>
               <Route path='/' element={<Home/>}/>
               <Route path='/movie/:moveid' element={<Details/>}/>
+              <Route path='/search/:query' element={<Search/>}/>
             </Routes>
         </main>
       </div>

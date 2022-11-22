@@ -1,12 +1,13 @@
 //React and Core Components
 import { useEffect, useState } from 'react';
 //Inbuilt Components
-import { Discover_URL, img_url } from '../../services/api';
+import { Discover_URL, fetchTopRatedMovies, API_KEY, BASE_API, } from '../../services/api';
+import Slider from '../Slider/Slider';
 
 //Third components
 import { Link } from 'react-router-dom';
 import { GiPunchBlast, GiBandit, GiAnimalSkull, GiButterfly, GiCannon, GiCharm, GiCastle,GiDramaMasks, GiJesterHat, GiMusicSpell } from 'react-icons/gi';
-
+import {FaChartBar}  from 'react-icons/fa';
 //Styles Components
 import './Discover.style.sass';
 
@@ -14,8 +15,17 @@ const Discover = () => {
   const [discover1, setDiscover1] = useState([]);
   const [discover2, setDiscover2] = useState([]);
   const [discover3, setDiscover3] = useState([]);
+  const [rated1, setRated1] = useState([]);
+  const [rated2, setRated2] = useState([]);
+  const [rated3, setRated3] = useState([]);
   const [genre, setGenre] = useState([]);
   const [active, setActive] = useState(0);
+
+  const fetchLoadMore = async (genre) => await BASE_API.get(`/movie/top_rated?api_key=${API_KEY}&with_genres=${genre}`).then((response) => {
+    setRated1(response.data.results.slice(0, 5));
+    setRated2(response.data.results.slice(6, 11));
+    setRated3(response.data.results.slice(12, 17));
+  });
 
   useEffect(() => {
     fetch(Discover_URL+'&with_genres='+genre)
@@ -25,14 +35,13 @@ const Discover = () => {
         setDiscover2(data.results.slice(6, 11));
         setDiscover3(data.results.slice(12, 17));
       });
+      fetchLoadMore(genre);
   }, [genre]);
 
   const handleGenre = (genreNum, i) => {
     setGenre(genreNum);
     setActive(i);
-    console.log('genNum', genreNum);
     };
-  console.log(discover1);
   return (
     <>
       <div className="genre-bar">
@@ -71,61 +80,13 @@ const Discover = () => {
         </a>
         
       </div>
-     
-      
-      <div className="wrapper">
-        <section id="section1">
-          <a href="#section3" className="arrow__btn left-arrow">
-            ‹
-          </a>
-          {discover1.map((movie) => (
-            <div className="item" key={movie.id}>
-              <Link to={`/movie/${movie.id}`}>
-                <img src={`${img_url}${movie.poster_path}`} alt={movie.title} />
-                <p className="duration">{movie.release_date.slice(0, 4)}</p>
-              </Link>
-            </div>
-          ))}
-          <a href="#section2" className="arrow__btn right-arrow">
-            ›
-          </a>
-        </section>
-
-        <section id="section2">
-          <a href="#section1" className="arrow__btn left-arrow">
-            ‹
-          </a>
-          {discover2.map((movie) => (
-            <div className="item" key={movie.id}>
-              <Link to={`/movie/${movie.id}`}>
-                <img src={`${img_url}${movie.poster_path}`} alt={movie.title} />
-                <p className="duration">{movie.release_date.slice(0, 4)}</p>
-              </Link>
-            </div>
-          ))}
-          <a href="#section3" className="arrow__btn right-arrow">
-            ›
-          </a>
-        </section>
-
-        <section id="section3">
-          <a href="#section2" className="arrow__btn left-arrow">
-            ‹
-          </a>
-          {discover3.map((movie) => (
-            <div className="item" key={movie.id}>
-              <Link to={`/movie/${movie.id}`}>
-                <img src={`${img_url}${movie.poster_path}`} alt={movie.title} />
-                <p className="duration">{movie.release_date.slice(0, 4)}</p>
-              </Link>
-            </div>
-          ))}
-
-          <a href="#section1" className="arrow__btn right-arrow">
-            ›
-          </a>
-        </section>
+      <Slider slide1={discover1} slide2={discover2} slide3={discover3} section="discover" />
+      <div className='container-title'>
+        <p>TOP RATED</p>
+        <button className='top-rated'><FaChartBar/></button>
       </div>
+      
+      <Slider slide1={rated1} slide2={rated2} slide3={rated3} section="top-rated"/>
     </>
   );
 };
