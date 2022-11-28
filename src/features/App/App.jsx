@@ -7,6 +7,7 @@ import Header from '../Header'
 import Home from '../../screens/Home'
 import Details from '../../screens/Details/'
 import Search from '../../screens/Search/'
+import Rated from '../../screens/Rated';
 
 
 //Third components
@@ -35,6 +36,7 @@ function App() {
               <Route path='/' element={<Home/>}/>
               <Route path='/movie/:moveid' element={<Details/>}/>
               <Route path='/search/:query' element={<Search/>}/>
+              <Route path='/rated' element={<Rated/>}/>
             </Routes>
         </main>
       </div>

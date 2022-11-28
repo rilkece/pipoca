@@ -8,14 +8,20 @@ import Rating from '../Rating';
 
 //Styles Components
 import './MovieCard.style.sass';
+import NoImage from '../../assets/img/no-image.png'
 
 const MovieCard = ({ iurl, movieDetails }) => {
+  const addDefaultSrc = (ev)=>{
+    ev.onerror = null;
+    ev.src = NoImage;
+  }
+
   return (
-    <Link to={`/movie/${movieDetails.id}`} className="movie-card">
+    <Link to={`/movie/${movieDetails.id}`} className="movie-card" key={movieDetails.id} >
       <div className="card-movie">
         <div className="card-movie__flipper">
           <div className="card-movie__front">
-            <img src={iurl} className="card-movie__image" alt="Card Image" />
+            <img src={iurl} className="card-movie__image" alt="Card Image" onError={(e)=>addDefaultSrc(e.currentTarget)}/>
           </div>
 
           <div className="card-movie__back">

@@ -1,20 +1,20 @@
 //React and Core Components
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
 //Inbuilt Components
-import App from './features/App'
-
+import App from './features/App';
 
 //Third components
 
 //Styles Components
-import './main.style.sass'
+import './main.style.sass';
 
-
+//Contexts & Services
+import RatingProvider from './contexts/RatingContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <RatingProvider>
     <App />
-  </React.StrictMode>
-)
+  </RatingProvider>
+);

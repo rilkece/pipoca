@@ -83,7 +83,9 @@ const Discover = () => {
       <Slider slide1={discover1} slide2={discover2} slide3={discover3} section="discover" />
       <div className='container-title'>
         <p>TOP RATED</p>
+        <Link to='/rated'>
         <button className='top-rated'><FaChartBar/></button>
+        </Link>
       </div>
       
       <Slider slide1={rated1} slide2={rated2} slide3={rated3} section="top-rated"/>

@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 //Inbuilt Components
 import logo from './logo.png';
+import UserMenu from '../../components/UserMenu';
 
 //Third components
 import { FiSearch } from 'react-icons/fi';
-import { BsFillPersonFill } from 'react-icons/bs';
 
 //Styles Components
 import './Header.style.sass';
@@ -39,9 +39,7 @@ const Header = () => {
           </Link>
         </form>
         <div className="header__extras">
-          <button className="header__extras__login">
-            <BsFillPersonFill />
-          </button>
+          <UserMenu />
         </div>
         <div className="break"></div>
       </div>

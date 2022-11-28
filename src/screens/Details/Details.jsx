@@ -25,7 +25,7 @@ const Details = () => {
       .then((res) => res.json())
       .then((data) => {
         setDetails(data);
-        console.log('details', data);
+        //console.log('details', data);
       });
       fetch(
         `https://api.themoviedb.org/3/movie/${moveid}/credits?api_key=${API_KEY}&language=en-US`
@@ -33,7 +33,7 @@ const Details = () => {
         .then((res) => res.json())
         .then((data) => {
           setCredits(data);
-          console.log('credits', data);
+          //console.log('credits', data);
         });
   }, [moveid]);
 
